@@ -18,7 +18,7 @@ public class LeapTankController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        FixedUpdate();
     }
 	
 	// gets the hand furthest away from the user (closest to the screen).
@@ -63,12 +63,12 @@ public class LeapTankController : MonoBehaviour {
 	}
 	
 	void MoveCharacter(Hand hand) {
-		if (hand.PalmPosition.ToUnityScaled().z > 0) {
-			transform.position += transform.forward * 0.1f;
+		if (hand.PalmPosition.ToUnityScaled().x > 1.0f) {
+			transform.position += transform.right * 0.4f;
 		}
 		
-		if (hand.PalmPosition.ToUnityScaled().z < -1.0f) {
-			transform.position -= transform.forward * 0.04f;
+		if (hand.PalmPosition.ToUnityScaled().x < -1.0f) {
+			transform.position -= transform.right * 0.04f;
 		}
 	}
 	
