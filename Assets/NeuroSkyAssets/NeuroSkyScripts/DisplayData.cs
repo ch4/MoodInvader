@@ -20,7 +20,7 @@ public class DisplayData : MonoBehaviour
 		
 		controller = GameObject.Find("NeuroSkyTGCController").GetComponent<TGCConnectionController>();
 		
-		controller.UpdatePoorSignalEvent += OnUpdatePoorSignal;
+		//controller.UpdatePoorSignalEvent += OnUpdatePoorSignal;
 		controller.UpdateAttentionEvent += OnUpdateAttention;
 		controller.UpdateMeditationEvent += OnUpdateMeditation;
 		
@@ -69,7 +69,7 @@ public class DisplayData : MonoBehaviour
         }
 		
 		GUILayout.Space(Screen.width-250);
-		GUILayout.Label(signalIcons[indexSignalIcons]);
+		//GUILayout.Label(signalIcons[indexSignalIcons]);
 		
 		GUILayout.EndHorizontal();
 

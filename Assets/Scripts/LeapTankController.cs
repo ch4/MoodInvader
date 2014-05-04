@@ -10,16 +10,16 @@ public class LeapTankController : MonoBehaviour {
 	GameObject m_carriedObject;
 	bool m_handOpenThisFrame = false;
 	bool m_handOpenLastFrame = false;
-	
+
 	// Use this for initialization
 	void Start () {
 		m_leapController = new Controller();
 	}
 
     // Update is called once per frame
-    void Update() {
-        FixedUpdate();
-    }
+    //void Update() {
+    //    FixedUpdate();
+    //}
 	
 	// gets the hand furthest away from the user (closest to the screen).
 	Hand GetForeMostHand() {
@@ -68,7 +68,7 @@ public class LeapTankController : MonoBehaviour {
 		}
 		
 		if (hand.PalmPosition.ToUnityScaled().x < -1.0f) {
-			transform.position -= transform.right * 0.04f;
+			transform.position -= transform.right * 0.4f;
 		}
 	}
 	
@@ -101,7 +101,7 @@ public class LeapTankController : MonoBehaviour {
 		Hand foremostHand = GetForeMostHand();
 		if (foremostHand != null) {
 			m_handOpenThisFrame = IsHandOpen(foremostHand);
-			ProcessLook(foremostHand);
+			//ProcessLook(foremostHand);
 			MoveCharacter(foremostHand);
 			HandCallbacks(foremostHand);
 			//MoveCarriedObject();

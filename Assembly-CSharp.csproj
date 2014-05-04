@@ -57,6 +57,8 @@
      <Compile Include="Assets\NeuroSkyAssets\NeuroSkyScripts\DisplayData.cs" />
      <Compile Include="Assets\NeuroSkyAssets\NeuroSkyScripts\PreserveGameObject.cs" />
      <Compile Include="Assets\NeuroSkyAssets\NeuroSkyScripts\TGCConnectionController.cs" />
+     <Compile Include="Assets\Scripts\AlienController.cs" />
+     <Compile Include="Assets\Scripts\Boundaries.cs" />
      <Compile Include="Assets\Scripts\LeapTankController.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
      <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
