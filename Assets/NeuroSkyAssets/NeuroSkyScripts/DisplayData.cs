@@ -58,15 +58,15 @@ public class DisplayData : MonoBehaviour
 		GUILayout.BeginHorizontal();
 		
 		
-        if (GUILayout.Button("Connect"))
-        {
-            controller.Connect();
-        }
-        if (GUILayout.Button("DisConnect"))
-        {
-            controller.Disconnect();
-			indexSignalIcons = 1;
-        }
+        //if (GUILayout.Button("Connect"))
+        //{
+        //    controller.Connect();
+        //}
+        //if (GUILayout.Button("DisConnect"))
+        //{
+        //    controller.Disconnect();
+        //    indexSignalIcons = 1;
+        //}
 		
 		GUILayout.Space(Screen.width-250);
 		//GUILayout.Label(signalIcons[indexSignalIcons]);
@@ -74,10 +74,9 @@ public class DisplayData : MonoBehaviour
 		GUILayout.EndHorizontal();
 
 		
-        GUILayout.Label("PoorSignal1:" + poorSignal1);
+        //GUILayout.Label("PoorSignal1:" + poorSignal1);
         GUILayout.Label("Attention1:" + attention1);
         GUILayout.Label("Meditation1:" + meditation1);
-		GUILayout.Label("Delta:" + delta);
-
+		//GUILayout.Label("Delta:" + delta);
     }
 }

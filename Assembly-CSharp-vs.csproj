@@ -60,6 +60,8 @@
      <Compile Include="Assets\Scripts\AlienController.cs" />
      <Compile Include="Assets\Scripts\Boundaries.cs" />
      <Compile Include="Assets\Scripts\LeapTankController.cs" />
+     <Compile Include="Assets\Scripts\TankBulletController.cs" />
+     <Compile Include="Assets\Scripts\TankGunController.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
      <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
      <Compile Include="Assets\iTween\Sample\RotateSample.cs" />

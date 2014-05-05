@@ -5,15 +5,23 @@ using Leap;
 public class LeapTankController : MonoBehaviour {
 	
 	Controller m_leapController;
+    
 	float m_lastBlastTime = 0.0f;
 	
 	GameObject m_carriedObject;
 	bool m_handOpenThisFrame = false;
 	bool m_handOpenLastFrame = false;
 
+    TankGunController gunController;
+
 	// Use this for initialization
 	void Start () {
 		m_leapController = new Controller();
+
+        gunController = GameObject.Find("tankBulletSpawn").GetComponent<TankGunController>();
+        InvokeRepeating("TryFire", 0.01f, .5f);
+
+        
 	}
 
     // Update is called once per frame
@@ -47,8 +55,7 @@ public class LeapTankController : MonoBehaviour {
         //if(Physics.SphereCast(new Ray(transform.position + transform.forward * 2.0f, transform.forward), 2.0f, out hit)) {
         //    m_carriedObject = hit.collider.gameObject;
         //}
-
-        // TODO: fire bullet
+        gunController.Fire();
 	}
 	
 	bool IsHandOpen(Hand h) {
@@ -63,13 +70,22 @@ public class LeapTankController : MonoBehaviour {
 	}
 	
 	void MoveCharacter(Hand hand) {
-		if (hand.PalmPosition.ToUnityScaled().x > 1.0f) {
+		if (hand.PalmPosition.ToUnityScaled().x > 2.0f) {
 			transform.position += transform.right * 0.4f;
-		}
-		
-		if (hand.PalmPosition.ToUnityScaled().x < -1.0f) {
-			transform.position -= transform.right * 0.4f;
-		}
+        } else if (hand.PalmPosition.ToUnityScaled().x > .75f) {
+            transform.position += transform.right * 0.2f;
+        }
+
+        if (hand.PalmPosition.ToUnityScaled().x < -2.0f) {
+            transform.position -= transform.right * 0.4f;
+        } else if (hand.PalmPosition.ToUnityScaled().x < -.75f) {
+            transform.position -= transform.right * 0.2f;
+        }
+
+        if (transform.position.x > 20) transform.position = new Vector3(20, transform.position.y, transform.position.z);
+        else if (transform.position.x < -20) transform.position = new Vector3(-20, transform.position.y, transform.position.z);
+
+        //Debug.Log(transform.position.x);
 	}
 	
 	// Determines if any of the hand open/close functions should be called.
@@ -107,5 +123,15 @@ public class LeapTankController : MonoBehaviour {
 			//MoveCarriedObject();
 		}
 		m_handOpenLastFrame = m_handOpenThisFrame;
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+        }
 	}
+
+    void TryFire() {
+        Hand foremostHand = GetForeMostHand();
+        if (foremostHand != null) {
+            //if (!IsHandOpen(foremostHand)) gunController.Fire();
+        }
+    }
 }
